@@ -1,11 +1,20 @@
-### Create new
+### Get
 GET {{url}}/v1/greetings/Dinesh
 Content-Type: application/json
 
+
+### Get Courses
+GET {{url}}/v1/courses
+Content-Type: application/json
+
+
+### Create new course
+POST {{url}}/v1/courses
+Content-Type: application/json
+
 {
-  "name": "Madrid",
-  "seatCount": 4,
-  "active": false
+  "name": "Java1",
+  "category": "Tech"
 }
 
 ### Modify
