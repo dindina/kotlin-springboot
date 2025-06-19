@@ -12,9 +12,9 @@ import jakarta.persistence.Table
 data class CourseEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    val id : Int?,
-    val name : String,
-    val category : String
+    var id : Int?,
+    var name : String,
+    var category : String
 )
 
 

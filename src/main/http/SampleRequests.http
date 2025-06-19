@@ -17,15 +17,20 @@ Content-Type: application/json
   "category": "Tech"
 }
 
-### Modify
-PUT {{url}}/tables/1
+### Modify course
+PUT {{url}}/v1/courses/1
 Content-Type: application/json
 
 {
-  "name": "costa-rica",
-  "seatCount": 10,
-  "active": true
+  "name": "Java11",
+  "category": "Tech12"
+
 }
+
+
+### Delete
+DELETE {{url}}/v1/courses/1
+
 
 ### Get all
 GET {{url}}/tables
@@ -33,5 +38,3 @@ GET {{url}}/tables
 ### Get single
 GET {{url}}/tables/3000
 
-### Delete
-DELETE {{url}}/tables/1
