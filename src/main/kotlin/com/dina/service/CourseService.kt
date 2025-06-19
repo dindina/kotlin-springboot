@@ -8,19 +8,27 @@ import mu.KLogging
 import org.springframework.stereotype.Service
 
 @Service
-class CourseService(val courseRepository: CourseRepository) {
+class CourseService(val courseRepository: CourseRepository, val instructorService: InstructorService) {
 
     companion object : KLogging()
 
     fun addCourse(courseDto: CourseDto): CourseDto {
-        logger.info("course $courseDto")
-        val entity = courseDto.let {
-            CourseEntity(null, it.name, it.category)
+        val instructor = instructorService.findInstructorById(courseDto.instructorId!!)
+        if(!instructor.isPresent){
+            throw CourseNotFoundException("Instructor Id is not Valid!")
         }
-        courseRepository.save(entity)
 
-        return entity.let {
-            CourseDto(it.id, it.name, it.category)
+        val courseEntity = courseDto.let {
+            CourseEntity(null, it.name, it.category, instructor.get())
+        }
+
+        courseRepository.save(courseEntity)
+
+        logger.info("Saved Course is : $courseEntity")
+
+        return courseEntity.let {
+            //CourseDTO(it.id!!, it.name, it.category)
+            CourseDto(it.id, it.name, it.category,it.instructor?.id)
         }
 
     }

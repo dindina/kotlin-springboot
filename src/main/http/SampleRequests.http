@@ -14,7 +14,26 @@ Content-Type: application/json
 
 {
   "name": "Java1",
-  "category": "Tech"
+  "category": "Tech",
+  "instructorId": 1
+}
+
+### Create new instructor
+POST {{url}}/v1/instructors
+Content-Type: application/json
+
+{
+  "name": "Dinesh"
+
+}
+
+### Create invalid course
+POST {{url}}/v1/courses
+Content-Type: application/json
+
+{
+  "name": "Java1"
+
 }
 
 ### Modify course
